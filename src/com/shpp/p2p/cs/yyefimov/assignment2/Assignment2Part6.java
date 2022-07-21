@@ -24,17 +24,17 @@ public class Assignment2Part6 extends WindowProgram {
     * border thickness (BORDER_THICKNESS), radius of worm section (SECTION_RADIUS).
     * X_OFFSET and Y_OFFSET meaning how we're moving coordinates for next section.
     * */
-    public static final int WORM_SECTIONS = 6;
-    public static final Color FILLING_COLOR = Color.GREEN;
-    public static final Color BORDER_COLOR = Color.RED;
-    public static final double X_OFFSET = 75;
-    public static final double Y_OFFSET = 40;
-    public static final double SECTION_RADIUS = 150;
-    public static final int BORDER_THICKNESS = 3;
+    public static final int         WORM_SECTIONS       = 6;
+    public static final Color       FILLING_COLOR       = Color.GREEN;
+    public static final Color       BORDER_COLOR        = Color.RED;
+    public static final double      X_OFFSET            = 2;
+    public static final double      Y_OFFSET            = 4;
+    public static final double      SECTION_RADIUS      = 300;
+    public static final int         BORDER_THICKNESS    = 3;
     /*
-    * First offset of our worm (FIRST_OFFSET).
+    * First offset of our worm (START_OFFSET). You can move first section of worm by this parameter.
     * */
-    public static final int FIRST_OFFSET = 1;
+    public static final int         START_OFFSET        = 1;
 
     public void run() {
         buildWorm();
@@ -42,7 +42,7 @@ public class Assignment2Part6 extends WindowProgram {
 
     private void buildWorm() {
         // Start to build each section.
-        for (int i = FIRST_OFFSET; i <= WORM_SECTIONS; i++) {
+        for (int i = START_OFFSET; i <= WORM_SECTIONS; i++) {
             createSection(i);
         }
     }
@@ -53,8 +53,8 @@ public class Assignment2Part6 extends WindowProgram {
         * worm circle. i % 2 give us odd or even.
         * */
         GOval section = new GOval(
-                                X_OFFSET * (i - 1),
-                                (i % 2) * Y_OFFSET,
+                                (SECTION_RADIUS / X_OFFSET) * (i - 1),
+                                    (SECTION_RADIUS / Y_OFFSET) * (i % 2),
                                     SECTION_RADIUS,
                                     SECTION_RADIUS
                                 );
