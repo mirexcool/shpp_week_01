@@ -28,7 +28,7 @@ public class Assignment2Part2 extends WindowProgram {
     * */
     public static boolean       FLEXIBLE            = true;
 
-
+    // Method will solve our problem.
     public void run() {
         // Split our work for 2 parts. First we will draw circles and after that rectangular.
         drawCircles(getWidth(), getHeight());
@@ -40,6 +40,7 @@ public class Assignment2Part2 extends WindowProgram {
     private void windowAdjustment() {
         int i = getHeight();
         int j = getWidth();
+
         while (FLEXIBLE){
             // If window size was changed we will redraw our Objects.
             if (i != getHeight() || j != getWidth())

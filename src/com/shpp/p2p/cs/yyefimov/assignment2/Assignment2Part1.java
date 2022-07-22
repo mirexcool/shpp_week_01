@@ -3,16 +3,19 @@ package com.shpp.p2p.cs.yyefimov.assignment2;
 import com.shpp.cs.a.console.TextProgram;
 
 /*
-* Class Assignment2Part1 reading arguments a,b,c from console, solving the equation and write answer to console.
+* Class Assignment2Part1 reading arguments a,b,c from console for square equation (a*x^2 + b*x + c = 0),
+* solving the equation and write answer to console.
 * */
 
 public class Assignment2Part1 extends TextProgram {
-
+    // We will solve equation in main method run() .
     public void run() {
         // This method receiving another method like argument. So we are resolving and reading data in one line.
+// This method receiving another method like argument. So we are resolving and reading data in one line.
         solveEquation(readDataFromConsole());
     }
 
+    // Method will get determinant and send it for further solving.
     private void solveEquation(double[] args) {
         double determinant;
         /*
@@ -28,6 +31,7 @@ public class Assignment2Part1 extends TextProgram {
         printRoots(args[0], determinant, getRoots(determinant, args));
     }
 
+    // Method will get roots and return them like an array.
     private double[] getRoots(double determinant, double[] args) {
         /*  Array what consist of our roots.
         *   x1 = roots[0], x2 = root[1]
@@ -43,6 +47,7 @@ public class Assignment2Part1 extends TextProgram {
         return roots;
     }
 
+    // Method for printing roots to console.
     private void printRoots(double a, double determinant, double[] roots) {
         /*
         * There is some amount of cases, such as
@@ -59,6 +64,7 @@ public class Assignment2Part1 extends TextProgram {
         else printAnswersForSpecialCases(a, roots);
     }
 
+    // Method for printing special cases of our equation.
     private void printAnswersForSpecialCases(double a, double[] roots) {
         // Fixing -0.0 to 0.0.
         if(roots[0] == 0)
@@ -76,6 +82,7 @@ public class Assignment2Part1 extends TextProgram {
         }
     }
 
+    // Method will read a,b,c from console.
     private double[] readDataFromConsole() {
         /*
         * We're reading a,b,c from console and return an array[3] = {a,b,c}.

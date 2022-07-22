@@ -5,7 +5,10 @@ import com.shpp.cs.a.graphics.WindowProgram;
 
 import java.awt.*;
 
-
+/*
+* This Class is drawing the flag(2-3 color). You can choose the flag what you want to draw by parameters below (
+* FLAG_IS_VERTICAL, FLAG_SECTIONS, FIRST_COLOR etc.).
+* */
 public class Assignment2Part4 extends WindowProgram {
     /*
     * Here we can define some colors for our program.
@@ -13,16 +16,16 @@ public class Assignment2Part4 extends WindowProgram {
     private static final Color          CARDINAL_RED            = new Color(196, 30, 58);
 
     /*
-    * Windows size.
+    * Windows size can be set here by these parameters.
     * */
-    public static final int             APPLICATION_WIDTH       = 150;
-    public static final int             APPLICATION_HEIGHT      = 150;
+    public static final int             APPLICATION_WIDTH       = 700;
+    public static final int             APPLICATION_HEIGHT      = 550;
 
     /*
      *  Define the type of our flag. It can consist of vertical section (FLAG_IS_VERTICAL = true) or
      *  horizontal section (FLAG_IS_VERTICAL = false).
      * */
-    public static final boolean         FLAG_IS_VERTICAL        = true;
+    public static final boolean         FLAG_IS_VERTICAL        = false;
 
     /*
     * For each section of our flag we need to define it color. We can choose 1,2,3 for FLAG_SECTIONS.
@@ -45,13 +48,15 @@ public class Assignment2Part4 extends WindowProgram {
     public static final int             FONT_SIZE               = 40;
     public static final Font            FONT_FOR_FLAG_LABEL     = GLabel.DEFAULT_FONT;
 
-
+    /*
+    * Method run() will create flag and label.
+    * */
     public void run() {
-        //  First we're creating a flag and then label.
         createFlag();
         createLabel();
     }
 
+    // Method will create adn draw label on the screen.
     private void createLabel() {
         /* The main problem of label is how to place it on the window. After creating the label we will know it size
          * and descent of label. So now we can easy to place our label.
@@ -62,11 +67,8 @@ public class Assignment2Part4 extends WindowProgram {
         add(label);
     }
 
+    // Method will create and draw flag.
     private void createFlag() {
-        createEachSectionOfFlag();
-    }
-
-    private void createEachSectionOfFlag() {
         // We know how many parts in our flag and can create each of it.
         for (int i = 0; i < FLAG_SECTIONS; i++) {
             // We have 2 variants of flag. Vertical like Belgium or horizontal like Austria.
@@ -76,6 +78,7 @@ public class Assignment2Part4 extends WindowProgram {
         }
     }
 
+    // Method will draw vertical flags.
     private GRect createVerticalFlagSection(int i) {
         /*
         * We are creating a rectangular GRect. The first coordinates is the center of our map minus hals size of
@@ -92,6 +95,7 @@ public class Assignment2Part4 extends WindowProgram {
         return sectionOfFlag;
     }
 
+    // Method will draw horizontal flags.
     private GObject createHorizontalFlagSection(int i) {
         /*
          * We are creating a rectangular GRect. The first coordinates is the center of our map minus hals size of
@@ -108,8 +112,8 @@ public class Assignment2Part4 extends WindowProgram {
         return sectionOfFlag;
     }
 
+    // Here we will set colors for each section of flag.
     private void setColors(GRect flag, int i) {
-        // Here we are set filled and colors for each section of our flag.
         flag.setFilled(true);
         if (i == 0) {
             flag.setFillColor(FIRST_COLOR);

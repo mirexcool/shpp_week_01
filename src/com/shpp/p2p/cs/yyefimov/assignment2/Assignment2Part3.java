@@ -5,12 +5,10 @@ import com.shpp.cs.a.graphics.WindowProgram;
 
 import java.awt.*;
 
-/* TODO: Replace these file comments with a description of what your program
- * does.
- */
+/* Our Class will draw pawprints on display. */
 
 public class Assignment2Part3 extends WindowProgram {
-    /* Constants controlling the relative positions of the
+    /** Constants controlling the relative positions of the
      * three toes to the upper-left corner of the pawprint.
      *
      * (Yes, I know that actual pawprints have four toes.
@@ -23,21 +21,21 @@ public class Assignment2Part3 extends WindowProgram {
     private static final double THIRD_TOE_OFFSET_X      = 60;
     private static final double THIRD_TOE_OFFSET_Y      = 20;
 
-    /* The position of the heel relative to the upper-left
+    /** The position of the heel relative to the upper-left
      * corner of the pawprint.
      */
     private static final double HEEL_OFFSET_X           = 20;
     private static final double HEEL_OFFSET_Y           = 40;
 
-    /* Each toe is an oval with this width and height. */
+    /** Each toe is an oval with this width and height. */
     private static final double TOE_WIDTH               = 20;
     private static final double TOE_HEIGHT              = 30;
 
-    /* The heel is an oval with this width and height. */
+    /** The heel is an oval with this width and height. */
     private static final double HEEL_WIDTH              = 40;
     private static final double HEEL_HEIGHT             = 60;
 
-    /* The default width and height of the window. These constants will tell Java to
+    /** The default width and height of the window. These constants will tell Java to
      * create a window whose size is *approximately* given by these dimensions. You should
      * not directly use these constants in your program; instead, use getWidth() and
      * getHeight(), which return the *exact* width and height of the window.
@@ -45,6 +43,9 @@ public class Assignment2Part3 extends WindowProgram {
     public static final int APPLICATION_WIDTH = 270;
     public static final int APPLICATION_HEIGHT = 220;
 
+    /*
+     * Method will create pawprints.
+     */
     public void run() {
         drawPawprint(20, 20);
         drawPawprint(180, 70);
@@ -63,6 +64,10 @@ public class Assignment2Part3 extends WindowProgram {
         drawEachToe(x,y);
     }
 
+    /*
+     * Method creating each GOval Object (toe) with correct offset.
+     * We have defined offset for each toe above our Class.
+     * */
     private void drawEachToe(double x, double y) {
         GOval[] toes = new GOval[3];
         // We have all constants with clearly names, so we can just put it to right place.
@@ -72,6 +77,9 @@ public class Assignment2Part3 extends WindowProgram {
         addToes(toes);
     }
 
+    /*
+    * Method adds each toe on our window. Before adding fill it with color.
+    * */
     private void addToes(GOval[] toes) {
         // We have three toes, so we will create each separately.
         for (int i = 0; i < 3; i++) {
@@ -81,11 +89,18 @@ public class Assignment2Part3 extends WindowProgram {
         }
     }
 
+    /*
+     * Method will create a GOval Object with correct position which we're receiving like parameters x,y and apply
+     * offset from constants.
+     * */
     private void drawTheHeel(double x, double y) {
         // Method what will receive GOval Object with right position and after that will fill it and make right colors.
         addHell(new GOval(x + HEEL_OFFSET_X,y + HEEL_OFFSET_Y,HEEL_WIDTH, HEEL_HEIGHT));
     }
 
+    /*
+     * Method making filling and color, then adds Object on the Window.
+     * */
     private void addHell(GOval heel) {
         heel.setFilled(true);
         heel.setFillColor(Color.BLACK);
