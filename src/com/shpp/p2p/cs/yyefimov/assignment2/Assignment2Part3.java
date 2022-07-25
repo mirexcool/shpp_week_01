@@ -5,7 +5,7 @@ import com.shpp.cs.a.graphics.WindowProgram;
 
 import java.awt.*;
 
-/* Our Class will draw pawprints on display. */
+/*  Class Assignment2Part3 will draw pawprints on display. */
 
 public class Assignment2Part3 extends WindowProgram {
     /** Constants controlling the relative positions of the
@@ -14,26 +14,34 @@ public class Assignment2Part3 extends WindowProgram {
      * (Yes, I know that actual pawprints have four toes.
      * Just pretend it's a cartoon animal. ^_^)
      */
-    private static final double FIRST_TOE_OFFSET_X      = 0;
-    private static final double FIRST_TOE_OFFSET_Y      = 20;
-    private static final double SECOND_TOE_OFFSET_X     = 30;
-    private static final double SECOND_TOE_OFFSET_Y     = 0;
-    private static final double THIRD_TOE_OFFSET_X      = 60;
-    private static final double THIRD_TOE_OFFSET_Y      = 20;
+    private static final double     FIRST_TOE_OFFSET_X      = 0;
+    private static final double     FIRST_TOE_OFFSET_Y      = 20;
+    private static final double     SECOND_TOE_OFFSET_X     = 30;
+    private static final double     SECOND_TOE_OFFSET_Y     = 0;
+    private static final double     THIRD_TOE_OFFSET_X      = 60;
+    private static final double     THIRD_TOE_OFFSET_Y      = 20;
+
+    //  Number of toes. Here is strictly value of 3.
+    public static final int         NUMBERS_OF_TOES         = 3;
+
+    //  We better code we will put offsets into [][] array.
+    public static final double[][]  TOES_OFFSETS            = { { FIRST_TOE_OFFSET_X,   FIRST_TOE_OFFSET_Y  },
+                                                                { SECOND_TOE_OFFSET_X,  SECOND_TOE_OFFSET_Y },
+                                                                { THIRD_TOE_OFFSET_X,   THIRD_TOE_OFFSET_Y  } };
 
     /** The position of the heel relative to the upper-left
      * corner of the pawprint.
      */
-    private static final double HEEL_OFFSET_X           = 20;
-    private static final double HEEL_OFFSET_Y           = 40;
+    private static final double     HEEL_OFFSET_X           = 20;
+    private static final double     HEEL_OFFSET_Y           = 40;
 
     /** Each toe is an oval with this width and height. */
-    private static final double TOE_WIDTH               = 20;
-    private static final double TOE_HEIGHT              = 30;
+    private static final double     TOE_WIDTH               = 20;
+    private static final double     TOE_HEIGHT              = 30;
 
     /** The heel is an oval with this width and height. */
-    private static final double HEEL_WIDTH              = 40;
-    private static final double HEEL_HEIGHT             = 60;
+    private static final double     HEEL_WIDTH              = 40;
+    private static final double     HEEL_HEIGHT             = 60;
 
     /** The default width and height of the window. These constants will tell Java to
      * create a window whose size is *approximately* given by these dimensions. You should
@@ -69,11 +77,11 @@ public class Assignment2Part3 extends WindowProgram {
      * We have defined offset for each toe above our Class.
      * */
     private void drawEachToe(double x, double y) {
-        GOval[] toes = new GOval[3];
-        // We have all constants with clearly names, so we can just put it to right place.
-        toes[0] = new GOval(x + FIRST_TOE_OFFSET_X, y + FIRST_TOE_OFFSET_Y, TOE_WIDTH, TOE_HEIGHT);
-        toes[1] = new GOval(x + SECOND_TOE_OFFSET_X, y + SECOND_TOE_OFFSET_Y, TOE_WIDTH, TOE_HEIGHT);
-        toes[2] = new GOval(x + THIRD_TOE_OFFSET_X, y + THIRD_TOE_OFFSET_Y, TOE_WIDTH, TOE_HEIGHT);
+        GOval[] toes = new GOval[NUMBERS_OF_TOES];
+        // We have all constants for each toe, so we can just put it to right place.
+        for (int i = 0; i < NUMBERS_OF_TOES; i++) {
+            toes[i] = new GOval(x + TOES_OFFSETS[i][0], y + TOES_OFFSETS[i][1], TOE_WIDTH, TOE_HEIGHT);
+        }
         addToes(toes);
     }
 
@@ -82,7 +90,7 @@ public class Assignment2Part3 extends WindowProgram {
     * */
     private void addToes(GOval[] toes) {
         // We have three toes, so we will create each separately.
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBERS_OF_TOES; i++) {
             toes[i].setFilled(true);
             toes[i].setFillColor(Color.BLACK);
             add(toes[i]);

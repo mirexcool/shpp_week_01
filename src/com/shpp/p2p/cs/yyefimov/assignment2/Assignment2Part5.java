@@ -7,7 +7,7 @@ import com.shpp.cs.a.graphics.WindowProgram;
 import java.awt.*;
 
 /*
-* Class will create illusion.
+* Class Assignment2Part5 will create illusion.
 * */
 public class Assignment2Part5 extends WindowProgram {
     /*
@@ -17,8 +17,8 @@ public class Assignment2Part5 extends WindowProgram {
     public static final int     APPLICATION_HEIGHT      = 600;
 
     /* The number of rows and columns in the grid, respectively. */
-    private static final int    NUM_ROWS                = 1;
-    private static final int    NUM_COLS                = 3;
+    private static final int    NUM_ROWS                = 5;
+    private static final int    NUM_COLS                = 6;
 
     /* The width and height of each box. */
     private static final double BOX_SIZE                = 30;
@@ -32,10 +32,7 @@ public class Assignment2Part5 extends WindowProgram {
     * Align. ALIGN = 2 mean center.
     * */
     private static final double ALIGN                   = 2;
-    /*
-     * If you need to change window size, while program is working, you need put true to flexible flag.
-     * */
-    public static boolean       FLEXIBLE                = true;
+
     /*
      * This offset we need cause of nature of our screen. We need to make offset from down and right side of window.
      * */
@@ -45,26 +42,9 @@ public class Assignment2Part5 extends WindowProgram {
     // Method will create our illusion.
     public void run() {
         createRowsAndColumns();
-        windowAdjustment();
     }
 
-    // Here we can re-draw our boxes if you will change window size.
-    private void windowAdjustment() {
-        int i = getHeight();
-        int j = getWidth();
-
-        while (FLEXIBLE){
-            if (i != getHeight() || j != getWidth())
-            {
-                removeAll();
-                i = getHeight();
-                j = getWidth();
-                createRowsAndColumns();
-            }
-        }
-    }
-
-    // We are building Rows And Columns here.
+    // We are building Columns here.
     private void createRowsAndColumns() {
         for (int i = 0; i < NUM_COLS; i++ ) {
             createColumns(i);
@@ -98,12 +78,10 @@ public class Assignment2Part5 extends WindowProgram {
         /* Every box we need move on box_size + box_spacing on each way. Here we received i, j, what will show
         * how we need to move each box.
         * */
-        GRect box = new GRect   (
-                start_x + i * BOX_SIZE + i * BOX_SPACING,
-                start_y + j * BOX_SIZE + j * BOX_SPACING,
-                BOX_SIZE,
-                BOX_SIZE
-        );
+        GRect box = new GRect   (start_x + i * BOX_SIZE + i * BOX_SPACING,
+                                start_y + j * BOX_SIZE + j * BOX_SPACING,
+                                    BOX_SIZE,
+                                    BOX_SIZE );
         // Set color and fill each box.
         box.setFilled(true);
         box.setFillColor(BOX_COLOR);

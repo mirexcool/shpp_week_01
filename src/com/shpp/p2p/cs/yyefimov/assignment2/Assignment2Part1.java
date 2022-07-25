@@ -3,15 +3,15 @@ package com.shpp.p2p.cs.yyefimov.assignment2;
 import com.shpp.cs.a.console.TextProgram;
 
 /*
-* Class Assignment2Part1 reading arguments a,b,c from console for square equation (a*x^2 + b*x + c = 0),
+* Class Assignment2Part1 reading arguments a,b,c from console for square equation (a*x^2 + b*x + c = 0), than
 * solving the equation and write answer to console.
 * */
 
 public class Assignment2Part1 extends TextProgram {
-    // We will solve equation in main method run() .
+    // We will solve equation in method run() .
     public void run() {
         // This method receiving another method like argument. So we are resolving and reading data in one line.
-// This method receiving another method like argument. So we are resolving and reading data in one line.
+    // This method receiving another method like argument. So we are resolving and reading data in one line.
         solveEquation(readDataFromConsole());
     }
 
@@ -32,23 +32,23 @@ public class Assignment2Part1 extends TextProgram {
     }
 
     // Method will get roots and return them like an array.
-    private double[] getRoots(double determinant, double[] args) {
+    private float[] getRoots(double determinant, double[] args) {
         /*  Array what consist of our roots.
         *   x1 = roots[0], x2 = root[1]
         *   Then we can find a roots.
         **/
-        double[] roots = new double[2];
+        float[] roots = new float[2];
         // Our equation square or linear? So we're will find roots in different ways.
         if (args[0] != 0) {
-            roots[0] = (args[1] * (-1) + Math.sqrt(determinant)) / (2 * args[0]);
-            roots[1] = (args[1] * (-1) - Math.sqrt(determinant)) / (2 * args[0]);
+            roots[0] = (float) ((args[1] * (-1) + Math.sqrt(determinant)) / (2 * args[0]));
+            roots[1] = (float) ((args[1] * (-1) - Math.sqrt(determinant)) / (2 * args[0]));
         }
-        else roots[0] = (-args[2])/args[1];
+        else roots[0] = (float) ((-args[2])/args[1]);
         return roots;
     }
 
     // Method for printing roots to console.
-    private void printRoots(double a, double determinant, double[] roots) {
+    private void printRoots(double a, double determinant, float[] roots) {
         /*
         * There is some amount of cases, such as
         * a ==0 or a != 0
@@ -61,11 +61,11 @@ public class Assignment2Part1 extends TextProgram {
         else if (determinant < 0) {
             println("There are no real roots");
         }
-        else printAnswersForSpecialCases(a, roots);
+        else printAnswersForSpecialCases(roots);
     }
 
     // Method for printing special cases of our equation.
-    private void printAnswersForSpecialCases(double a, double[] roots) {
+    private void printAnswersForSpecialCases( float[] roots) {
         // Fixing -0.0 to 0.0.
         if(roots[0] == 0)
             println("There is one root: " + 0);
